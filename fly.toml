@@ -1,0 +1,28 @@
+# fly.toml app configuration file generated for blue-star-2255 on 2023-09-25T21:38:06-04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "blue-star-2255"
+primary_region = "mia"
+console_command = "/rails/bin/rails console"
+
+[build]
+
+[deploy]
+
+[[mounts]]
+  source = "data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[statics]]
+  guest_path = "/rails/public"
+  url_prefix = "/"
